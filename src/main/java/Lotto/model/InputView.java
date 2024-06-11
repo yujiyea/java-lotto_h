@@ -16,7 +16,12 @@ public class InputView {
         return scanner.nextInt();
     }
 
-    public static Lotto requestInputWinningLotto() {
+    public static int requestInputManualCount() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    public static Lotto requestInputLotto() {
         Scanner scanner = new Scanner(System.in);
         String winningLotto = scanner.nextLine();
         validateWinningLottoType(winningLotto);
