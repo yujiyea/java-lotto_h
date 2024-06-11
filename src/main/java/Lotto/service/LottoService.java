@@ -1,7 +1,6 @@
 package Lotto.service;
 
 import Lotto.domain.Lotto;
-import Lotto.domain.MyLotto;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,14 +21,15 @@ public class LottoService { // 생성용 서비스
     }
 
 
-    public MyLotto generateMyLotto(int money) {
-        int lottoCount = money/LOTTO_PRICE;
+    public List<Lotto> generateMyLotto(int money, int  manualLottoCount) {
+        int lottoTotalCount = money/LOTTO_PRICE;
+        int restLottoCount = lottoTotalCount - manualLottoCount;
         List<Lotto> lottoList = new ArrayList<>();
 
-        for(int i=0; i<lottoCount; i++){
+        for(int i=0; i<restLottoCount; i++){
             lottoList.add(generateLottoNumbers());
         }
 
-        return new MyLotto(lottoList);
+        return lottoList;
     }
 }

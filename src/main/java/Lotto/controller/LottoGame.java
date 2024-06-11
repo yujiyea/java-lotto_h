@@ -9,7 +9,9 @@ import Lotto.service.LottoCalculateService;
 import Lotto.service.LottoService;
 import Lotto.service.LottoWinningService;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Map;
 
 public class LottoGame {
@@ -20,9 +22,17 @@ public class LottoGame {
     public static void start(){
 
         int inputMoney = receiveInputMoney();
+        int manualLottoCount = receiveInputManualCount();
 
-        MyLotto myLotto = lottoService.generateMyLotto(inputMoney);
-        OutputView.printMyLotto(myLotto);
+        OutputView.printManualLottoNumber();
+        List<Lotto> manualLotto = new ArrayList<>();
+        for(int i=0; i < manualLottoCount; i++){
+            manualLotto.add(receiveInputManualLotto());
+        }
+        MyLotto myLotto = new MyLotto(manualLotto);
+        List<Lotto> autoLotto = lottoService.generateMyLotto(inputMoney, manualLottoCount);
+        myLotto.combineLotto(autoLotto);
+        OutputView.printMyLotto(myLotto, manualLottoCount);
 
         Lotto winningLotto = receiveWinningLotto();
 
@@ -53,7 +63,7 @@ public class LottoGame {
         while(true){
             try{
                 OutputView.printInputWinningLotto();
-                return InputView.requestInputWinningLotto();
+                return InputView.requestInputLotto();
             }catch(InputMismatchException e){
                 OutputView.printErrorMessage(e);
             }
@@ -65,6 +75,27 @@ public class LottoGame {
             try{
                 OutputView.printInputMoney();
                 return InputView.requestInputMoney();
+            }catch(InputMismatchException e){
+                OutputView.printErrorMessage(e);
+            }
+        }
+    }
+
+    private static int receiveInputManualCount(){
+        while(true){
+            try{
+                OutputView.printManualLotto();
+                return InputView.requestInputManualCount();
+            }catch(InputMismatchException e){
+                OutputView.printErrorMessage(e);
+            }
+        }
+    }
+
+    private static Lotto receiveInputManualLotto(){
+        while(true){
+            try{
+                return InputView.requestInputLotto();
             }catch(InputMismatchException e){
                 OutputView.printErrorMessage(e);
             }

@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MyLotto {
-    private final List<Lotto> lottoList;
+    private static final int LOTTO_PRICE = 1000;
+    private List<Lotto> lottoList;
 
     private Map<MatchPrice, Integer> winningResult;
 
@@ -27,5 +28,13 @@ public class MyLotto {
 
     public void setWinningResult(Map<MatchPrice, Integer> map){
         winningResult = map;
+    }
+
+
+    public void combineLotto(List<Lotto> autoLotto) {
+//        lottoList.addAll(autoLotto);
+        for (Lotto lotto : autoLotto){
+            lottoList.add(lotto);
+        }
     }
 }
