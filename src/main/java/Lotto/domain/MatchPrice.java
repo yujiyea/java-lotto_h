@@ -1,5 +1,7 @@
 package Lotto.domain;
 
+import java.util.Arrays;
+
 public enum MatchPrice {
 
     THREE_MATCH(3, 5000),
@@ -23,4 +25,12 @@ public enum MatchPrice {
     public int getPrice() {
         return price;
     }
+
+    public static MatchPrice getMatchPrice(int matchCount){
+        return Arrays.stream(values())
+                .filter(value -> value.matchCount == matchCount)
+                .findAny()
+                .orElse(null);
+    }
+
 }
