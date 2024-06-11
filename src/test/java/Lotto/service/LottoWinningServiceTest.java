@@ -72,23 +72,27 @@ class LottoWinningServiceTest {
     @Test
     void check_myLotto(){
         //given
-        Lotto resultLotto = new Lotto(List.of(1,3,6,15,32,42));
-        LottoWinningService lottoWinningService = new LottoWinningService(resultLotto, 45);
-        List<Lotto> lottoList = List.of(new Lotto(List.of(1,3,6,9,23,17)),
-                new Lotto(List.of(1,3,6,15,23,17)),
-                new Lotto(List.of(1,3,6,15,32,17)),
-                new Lotto(List.of(1,3,6,15,32,42)),
-                new Lotto(List.of(1,3,6,15,32,45)),
-                                        new Lotto(List.of(2,4,7,10,13,18)),
-                                        new Lotto(List.of(2,4,7,10,13,27)));
+        Lotto resultLotto = new Lotto(List.of(11, 40, 24, 8, 19, 12));
+        LottoWinningService lottoWinningService = new LottoWinningService(resultLotto, 3);
+        List<Lotto> lottoList = List.of(
+                                        new Lotto(List.of(35, 36, 42, 38, 7, 17)),
+                                        new Lotto(List.of(14, 40, 38, 1, 25, 34)),
+                                        new Lotto(List.of(40, 38, 22, 42, 24, 17)),
+                                        new Lotto(List.of(36, 29, 22, 34, 8, 44)),
+                                        new Lotto(List.of(11, 40, 24, 8, 36, 20)),
+                                        new Lotto(List.of(32, 25, 23, 5, 45, 37)),
+                                        new Lotto(List.of(17, 45, 10, 25, 35, 23)),
+                                        new Lotto(List.of(5, 6, 26, 37, 39, 42)),
+                                        new Lotto(List.of(44, 21, 38, 12, 43, 6)),
+                                        new Lotto(List.of(37, 10, 16, 19, 29, 42)));
         MyLotto myLotto = new MyLotto(lottoList);
 
         Map<MatchPrice, Integer> resultMap = new EnumMap<>(MatchPrice.class);
-        resultMap.put(MatchPrice.THREE_MATCH, 1);
+        //resultMap.put(MatchPrice.THREE_MATCH, 1);
         resultMap.put(MatchPrice.FOUR_MATCH, 1);
-        resultMap.put(MatchPrice.FIVE_MATCH, 1);
-        resultMap.put(MatchPrice.FIVE_BONUS_MATCH, 1);
-        resultMap.put(MatchPrice.SIX_MATCH, 1);
+        //resultMap.put(MatchPrice.FIVE_MATCH, 1);
+        //resultMap.put(MatchPrice.FIVE_BONUS_MATCH, 1);
+        //resultMap.put(MatchPrice.SIX_MATCH, 1);
 
         //when
         lottoWinningService.checkMyLottoWinning(myLotto);

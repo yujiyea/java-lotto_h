@@ -2,11 +2,10 @@ package Lotto.service;
 
 import Lotto.domain.MatchPrice;
 
-import java.util.EnumMap;
 import java.util.Map;
 
 public class LottoCalculateService {
-    public double calculateTotalRate(Map<MatchPrice, Integer> map, int money) {
+    public static double calculateTotalRate(Map<MatchPrice, Integer> map, int money) {
         double totalPrice = 0f ;
 
         for(MatchPrice key : map.keySet()){

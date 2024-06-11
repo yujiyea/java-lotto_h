@@ -21,8 +21,8 @@ public class LottoWinningService {
     public int compareLotto(Lotto lotto) {
         int count = 0;
         List<Integer> currentLotto = lotto.getLottoNumber();
-        for(int i=0;i<currentLotto.size(); i++){
-            if (winLotto.getLottoNumber().contains(currentLotto.get(i))){
+        for (Integer integer : currentLotto) {
+            if (winLotto.getLottoNumber().contains(integer)) {
                 count++;
             }
         }
@@ -42,7 +42,7 @@ public class LottoWinningService {
 
         for(Lotto lotto : lottoList){
             int result = compareLotto(lotto);
-            if(result<3) break;
+            if(result<3) continue;
             MatchPrice matchPrice = MatchPrice.getMatchPrice(result);
             map.put(matchPrice, map.getOrDefault(matchPrice, 0)+1);
         }
