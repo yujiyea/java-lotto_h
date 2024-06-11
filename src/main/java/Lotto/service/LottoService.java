@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class LottoService {
+public class LottoService { // 생성용 서비스
     private static final int LOTTO_PRICE = 1000;
     public Lotto generateLottoNumbers(){
         List<Integer> lottoNumberRange = new ArrayList<>();

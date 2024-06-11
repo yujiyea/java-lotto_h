@@ -24,13 +24,17 @@ class LottoCalculateServiceTest {
 
         //when
         LottoCalculateService lottoCalculateService = new LottoCalculateService();
-        //Float rate = lottoCalculateService.calculateTotalRate(map, money);
+        double rate = lottoCalculateService.calculateTotalRate(map, money);
 
         //then
-        //assertThat(rate).isEqualTo(0.35);
-
-
-
+        assertThat(rate).isEqualTo(0.35);
     }
 
+//    @Test
+//    void test(){
+//        final LottoNumber number1 = new LottoNumber.from(1);
+//        final LottoNumber number2 = new LottoNumber.from(1);
+//        assertThat(number1).isEqualTo(number2);
+//        assertThat(number1).isSameAs(number2);
+//    }
 }
